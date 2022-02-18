@@ -1,0 +1,8 @@
+{
+  "type": "unidentifiedenchantments:hiddenloot",
+  "conditions": [
+    {
+      "condition": "unidentifiedenchantments:chest_condition"
+    }
+  ]
+}
