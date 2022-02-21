@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
+    "unidentifiedenchantments:curseloot",
     "unidentifiedenchantments:hiddenloot"
   ]
 }

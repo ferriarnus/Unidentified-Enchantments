@@ -26,6 +26,8 @@ public class FakeCreeper extends Creeper{
 	
 	public void setPlayer(Player player) {
 		this.player = player;
+		System.out.println("set");
+		System.out.println(this.player);
 	}
 	
 	@Override
@@ -35,10 +37,13 @@ public class FakeCreeper extends Creeper{
 	
 	@Override
 	public boolean isInvisibleTo(Player p_20178_) {
-		if (p_20178_.equals(this.player)) {
+		if (this.player == null) {
+			return true;
+		}
+		if (p_20178_.getUUID().equals(this.player.getUUID())) {
 			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	@Override

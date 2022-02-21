@@ -16,6 +16,7 @@ public class LootRegistry {
 		GLM.register(FMLJavaModLoadingContext.get().getModEventBus());
 	}
 	
-	public static final RegistryObject<HiddenLootModifier.Serializer> BLUEPRINTS = GLM.register("hiddenloot", HiddenLootModifier.Serializer::new);
-	
+	public static final RegistryObject<HiddenLootModifier.Serializer> HIDDENLOOT = GLM.register("hiddenloot", HiddenLootModifier.Serializer::new);
+	public static final RegistryObject<CurseLootModifier.Serializer> CURSELOOT = GLM.register("curseloot", CurseLootModifier.Serializer::new);
+
 }

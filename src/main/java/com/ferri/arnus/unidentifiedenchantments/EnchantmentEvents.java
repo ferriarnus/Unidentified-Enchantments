@@ -15,7 +15,7 @@ public class EnchantmentEvents {
 		
 	@SubscribeEvent
 	static void madness(PlayerTickEvent event) {
-		if (EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.MADNESSCURSE.get(), event.player) != null && event.player.level.getGameTime() % 120 == 0 && event.side.isServer() && event.phase == Phase.END) {
+		if (EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.MADNESSCURSE.get(), event.player) != null && event.player.level.getGameTime() % 120 == 0 && event.phase == Phase.END) {
 			FakeCreeper creeper = EntityRegistry.FAKECREEPER.get().create(event.player.level);
 			event.player.level.addFreshEntity(creeper);
 			creeper.setPos(event.player.position());

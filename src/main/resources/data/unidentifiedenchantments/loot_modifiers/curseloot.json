@@ -1,0 +1,8 @@
+{
+  "type": "unidentifiedenchantments:curseloot",
+  "conditions": [
+    {
+      "condition": "unidentifiedenchantments:chest_condition"
+    }
+  ]
+}
