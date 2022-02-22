@@ -11,11 +11,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Player.BedSleepingProblem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -65,6 +67,13 @@ public class EnchantmentEvents {
 					attributeinstance.removeModifier(SPEED_MODIFIER_CURSE_UUID);
 				}
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	static void sleep(PlayerSleepInBedEvent event) {
+		if (EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.INSOMNIACURSE.get(), event.getEntityLiving()) != null) {
+			event.setResult(BedSleepingProblem.NOT_SAFE);
 		}
 	}
 }
