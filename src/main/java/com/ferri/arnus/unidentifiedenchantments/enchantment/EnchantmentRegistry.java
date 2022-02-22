@@ -27,7 +27,7 @@ public class EnchantmentRegistry {
 	public static final RegistryObject<WeightCurse> WEIGHTCURSE = ENCHANTMENTS.register("weightcurse", () -> new WeightCurse(Rarity.RARE, EnchantmentCategory.ARMOR, ARMOR_SLOTS));
 	public static final RegistryObject<InsomniaCurse> INSOMNIACURSE = ENCHANTMENTS.register("insomniacurse", () -> new InsomniaCurse(Rarity.RARE, EnchantmentCategory.ARMOR, ARMOR_SLOTS));
 	public static final RegistryObject<VanityCurse> VANITYCURSE = ENCHANTMENTS.register("vanitycurse", () -> new VanityCurse(Rarity.RARE, EnchantmentCategory.BREAKABLE, EquipmentSlot.values()));
-	public static final RegistryObject<MadnessCurse> MADNESSCURSE = ENCHANTMENTS.register("madnesscurse", () -> new MadnessCurse(Rarity.RARE, EnchantmentCategory.BREAKABLE, ARMOR_SLOTS));
+	public static final RegistryObject<MadnessCurse> MADNESSCURSE = ENCHANTMENTS.register("madnesscurse", () -> new MadnessCurse(Rarity.RARE, EnchantmentCategory.ARMOR, ARMOR_SLOTS));
 
 	static {
 		CURSELIST.add(HUNGERCURSE);

@@ -28,7 +28,7 @@ public class CurseLootModifier extends LootModifier{
 			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
 			if (!enchantments.isEmpty()) {
 				if(0.15 + 0.1*enchantments.size() > new Random().nextDouble()) {
-					stack.enchant(EnchantmentRegistry.CURSELIST.get(new Random().nextInt(EnchantmentRegistry.CURSELIST.size())).get(), 0);
+					stack.enchant(EnchantmentRegistry.CURSELIST.get(new Random().nextInt(EnchantmentRegistry.CURSELIST.size())).get(), 1);
 				}
 			}
 		}
