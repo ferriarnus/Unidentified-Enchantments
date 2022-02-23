@@ -13,6 +13,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
@@ -22,7 +23,7 @@ import net.minecraftforge.common.util.LazyOptional;
 public class ScrollOfIdentification extends Item{
 
 	public ScrollOfIdentification() {
-		super(new Properties().stacksTo(1));
+		super(new Properties().stacksTo(1).tab(CreativeModeTab.TAB_COMBAT));
 	}
 	
 	@Override

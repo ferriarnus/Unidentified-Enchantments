@@ -16,6 +16,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
@@ -24,7 +25,7 @@ public class HideEnchantsEvents {
 	private static final ResourceLocation ALT_FONT = new ResourceLocation("minecraft", "alt");
 	private static final Style ROOT_STYLE = Style.EMPTY.withFont(ALT_FONT);
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	static void hidetoltip(ItemTooltipEvent event) {
 		event.getItemStack().getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(cap -> {
 			for (Enchantment enchantment: cap.getHiddenMap().keySet()) {

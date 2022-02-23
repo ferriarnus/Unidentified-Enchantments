@@ -134,13 +134,16 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+    maven {
+        url = "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.18.1-39.0.63'
+    minecraft 'net.minecraftforge:forge:1.18.1-39.0.66'
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -155,6 +158,14 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+    
+    runtimeOnly fg.deobf("curse.maven:apotheosis-313970:3647864")
+    runtimeOnly fg.deobf("curse.maven:enchantmentdescriptions-250419:3615621")
+    runtimeOnly fg.deobf("curse.maven:placebo-283644:3647860")
+    runtimeOnly fg.deobf("curse.maven:patchouli-306770:3630725")
+    
+    runtimeOnly fg.deobf("curse.maven:legendarytooltips-532127:3653194")
+    runtimeOnly fg.deobf("curse.maven:iceberg-520110:3632396")
     
 }
 

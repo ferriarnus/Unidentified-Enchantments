@@ -46,7 +46,5 @@ public class HiddenLootModifier extends LootModifier{
 		public JsonObject write(HiddenLootModifier instance) {
 			return makeConditions(instance.conditions);
 		}
-		
 	}
-
 }
