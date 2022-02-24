@@ -21,11 +21,12 @@ apply plugin: 'org.spongepowered.mixin'
 mixin {
     // MixinGradle Settings
     config "mixins.unidentifiedenchantments.json"
+    config "mixins.unidentifiedenchantments.enchantingoverhauled.json"
     
     add sourceSets.main, 'mixins.unidentifiedenchantments.refmap.json'
 }
 
-version = '1.0'
+version = '1.0.2'
 group = 'com.ferri.arnus.unidentifiedenchantments' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'unidentifiedenchantments'
 
@@ -159,13 +160,18 @@ dependencies {
     
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
     
-    runtimeOnly fg.deobf("curse.maven:apotheosis-313970:3647864")
-    runtimeOnly fg.deobf("curse.maven:enchantmentdescriptions-250419:3615621")
-    runtimeOnly fg.deobf("curse.maven:placebo-283644:3647860")
-    runtimeOnly fg.deobf("curse.maven:patchouli-306770:3630725")
+    compileOnly fg.deobf("curse.maven:enchantingoverhauled-565463:3656839")
     
-    runtimeOnly fg.deobf("curse.maven:legendarytooltips-532127:3653194")
-    runtimeOnly fg.deobf("curse.maven:iceberg-520110:3632396")
+    //runtimeOnly fg.deobf("curse.maven:apotheosis-313970:3647864")
+    //runtimeOnly fg.deobf("curse.maven:enchantmentdescriptions-250419:3615621")
+    //runtimeOnly fg.deobf("curse.maven:placebo-283644:3647860")
+    //runtimeOnly fg.deobf("curse.maven:patchouli-306770:3630725")
+    
+    //runtimeOnly fg.deobf("curse.maven:legendarytooltips-532127:3653194")
+    //runtimeOnly fg.deobf("curse.maven:iceberg-520110:3632396")
+    
+    //runtimeOnly fg.deobf("curse.maven:enchantingoverhauled-565463:3656839")
+   
     
 }
 

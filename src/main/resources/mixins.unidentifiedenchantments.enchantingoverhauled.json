@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.ferri.arnus.unidentifiedenchantments.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mixins.unidentifiedenchantments.refmap.json",
+  "plugin": "com.ferri.arnus.unidentifiedenchantments.compat.enchantingoverhauled.EnchantingOverhauledPlugin",
+  "mixins": [
+    "ModEnchantmentScreenMixin",
+    "ModEnchantmentMenuMixin"
+  ],
+  "minVersion": "0.8.4"
+}

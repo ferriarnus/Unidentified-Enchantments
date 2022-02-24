@@ -1,0 +1,8 @@
+{
+  "type": "unidentifiedenchantments:hiddenenchantingoverhauledloot",
+  "conditions": [
+    {
+      "condition": "unidentifiedenchantments:chest_condition"
+    }
+  ]
+}

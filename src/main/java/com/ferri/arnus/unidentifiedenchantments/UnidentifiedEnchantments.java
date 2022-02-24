@@ -1,5 +1,7 @@
 package com.ferri.arnus.unidentifiedenchantments;
 
+import com.ferri.arnus.unidentifiedenchantments.compat.enchantingoverhauled.EnchantingOverhauledLootRegistry;
+import com.ferri.arnus.unidentifiedenchantments.compat.enchantingoverhauled.HideEnchantingOverhauledEvents;
 import com.ferri.arnus.unidentifiedenchantments.enchantment.EnchantmentRegistry;
 import com.ferri.arnus.unidentifiedenchantments.entity.EntityRegistry;
 import com.ferri.arnus.unidentifiedenchantments.item.ItemRegistry;
@@ -11,6 +13,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Creeper;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -18,6 +21,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLLoader;
 
 @Mod(UnidentifiedEnchantments.MODID)
 public class UnidentifiedEnchantments {
@@ -31,6 +35,11 @@ public class UnidentifiedEnchantments {
         
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::renders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerAttributes);
+        
+        if(FMLLoader.getLoadingModList().getModFileById("enchanting_overhauled") != null) {
+        	MinecraftForge.EVENT_BUS.register(HideEnchantingOverhauledEvents.class);
+        	EnchantingOverhauledLootRegistry.register();
+        }
     }
     
 	private void renders(FMLClientSetupEvent event) {

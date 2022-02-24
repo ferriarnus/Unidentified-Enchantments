@@ -2,6 +2,7 @@
   "replace": false,
   "entries": [
     "unidentifiedenchantments:curseloot",
-    "unidentifiedenchantments:hiddenloot"
+    "unidentifiedenchantments:hiddenloot",
+    "unidentifiedenchantments:hiddenenchantingoverhauledloot"
   ]
 }

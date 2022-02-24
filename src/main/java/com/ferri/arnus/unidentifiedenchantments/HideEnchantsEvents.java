@@ -22,9 +22,9 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 @EventBusSubscriber
 public class HideEnchantsEvents {
-	private static final ResourceLocation ALT_FONT = new ResourceLocation("minecraft", "alt");
-	private static final Style ROOT_STYLE = Style.EMPTY.withFont(ALT_FONT);
-
+	public static final ResourceLocation ALT_FONT = new ResourceLocation("minecraft", "alt");
+	public static final Style ROOT_STYLE = Style.EMPTY.withFont(ALT_FONT);
+	
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	static void hidetoltip(ItemTooltipEvent event) {
 		event.getItemStack().getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(cap -> {

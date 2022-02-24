@@ -1,4 +1,4 @@
-package com.ferri.arnus.unidentifiedenchantments.loot;
+package com.ferri.arnus.unidentifiedenchantments.compat.enchantingoverhauled;
 
 import com.ferri.arnus.unidentifiedenchantments.UnidentifiedEnchantments;
 
@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class LootRegistry {
+public class EnchantingOverhauledLootRegistry {
 	
 	public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, UnidentifiedEnchantments.MODID);
 	
@@ -16,8 +16,6 @@ public class LootRegistry {
 		GLM.register(FMLJavaModLoadingContext.get().getModEventBus());
 	}
 	
-	public static final RegistryObject<HiddenLootModifier.Serializer> HIDDENLOOT = GLM.register("hiddenloot", HiddenLootModifier.Serializer::new);
-	public static final RegistryObject<CurseLootModifier.Serializer> CURSELOOT = GLM.register("curseloot", CurseLootModifier.Serializer::new);
-	public static final RegistryObject<HiddenLootModifier.Serializer> compat = GLM.register("hiddenenchantingoverhauledloot", HiddenLootModifier.Serializer::new);
+	public static final RegistryObject<HiddenEnchantingOverhauledLootModifier.Serializer> HIDDENLOOT = GLM.register("hiddenenchantingoverhauledloot", HiddenEnchantingOverhauledLootModifier.Serializer::new);
 
 }

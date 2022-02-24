@@ -2,11 +2,11 @@ package com.ferri.arnus.unidentifiedenchantments.capability;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import com.google.common.collect.Maps;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.EnchantmentNames;
+import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -16,6 +16,8 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 public class HiddenEnchantments implements IHiddenEnchantments{
 	
 	private Map<Enchantment,String> hiddenmap = new HashMap<Enchantment, String>();
+	private final Random random = new Random();
+	private final String[] words = new String[]{"the", "elder", "scrolls", "klaatu", "berata", "niktu", "xyzzy", "bless", "curse", "light", "darkness", "fire", "air", "earth", "water", "hot", "dry", "cold", "wet", "ignite", "snuff", "embiggen", "twist", "shorten", "stretch", "fiddle", "destroy", "imbue", "galvanize", "enchant", "free", "limited", "range", "of", "towards", "inside", "sphere", "cube", "self", "other", "ball", "mental", "physical", "grow", "shrink", "demon", "elemental", "spirit", "animal", "creature", "beast", "humanoid", "undead", "fresh", "stale", "phnglui", "mglwnafh", "cthulhu", "rlyeh", "wgahnagl", "fhtagn", "baguette"};
 
 	@Override
 	public CompoundTag serializeNBT() {
@@ -58,7 +60,22 @@ public class HiddenEnchantments implements IHiddenEnchantments{
 	}
 	
 	public void add(Enchantment enchantment) {
-		hiddenmap.put(enchantment, EnchantmentNames.getInstance().getRandomName(Minecraft.getInstance().font, 86).getString());
+		hiddenmap.put(enchantment, getRandomName(75));
 	}
+	
+	public String getRandomName(int pMaxWidth) {
+	      StringBuilder stringbuilder = new StringBuilder();
+	      int i = random.nextInt(2) + 3;
+
+	      for(int j = 0; j < i; ++j) {
+	         if (j != 0) {
+	            stringbuilder.append(" ");
+	         }
+
+	         stringbuilder.append(Util.getRandom(this.words, this.random));
+	      }
+	      stringbuilder.setLength(pMaxWidth);
+	      return stringbuilder.toString().replace('\0', ' ').strip();
+	   }
 
 }
