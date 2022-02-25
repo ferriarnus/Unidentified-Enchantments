@@ -26,7 +26,7 @@ mixin {
     add sourceSets.main, 'mixins.unidentifiedenchantments.refmap.json'
 }
 
-version = '1.0.2'
+version = '1.0.3'
 group = 'com.ferri.arnus.unidentifiedenchantments' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'unidentifiedenchantments'
 

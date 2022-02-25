@@ -1,5 +1,6 @@
 package com.ferri.arnus.unidentifiedenchantments.item;
 
+import java.util.Map;
 import java.util.Random;
 
 import com.ferri.arnus.unidentifiedenchantments.capability.ExpStorage;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.LazyOptional;
 
@@ -63,9 +65,11 @@ public class ScrollOfIdentification extends Item{
 			Player p_150891_) {
 		LazyOptional<IHiddenEnchantments> capability = p_150889_.getItem().getCapability(HiddenEnchantProvider.ENCHANTMENTS);
 		if (capability.isPresent() && !capability.resolve().get().getHiddenMap().isEmpty() && this.isFoil(p_150888_)) {
+			Map<Enchantment, String> hiddenMap = capability.resolve().get().getHiddenMap();
 			p_150888_.setCount(0);
-			Object[] array = capability.resolve().get().getHiddenMap().keySet().toArray();
-			capability.resolve().get().getHiddenMap().remove(array[new Random().nextInt(array.length)]);
+			Object[] array = hiddenMap.keySet().toArray();
+			hiddenMap.remove(array[new Random().nextInt(array.length)]);
+			capability.resolve().get().setHiddenMap(hiddenMap);
 			return true;
 		}
 		return super.overrideStackedOnOther(p_150888_, p_150889_, p_150890_, p_150891_);

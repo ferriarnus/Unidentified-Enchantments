@@ -30,7 +30,6 @@ public class HideEnchantsEvents {
 		event.getItemStack().getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(cap -> {
 			for (Enchantment enchantment: cap.getHiddenMap().keySet()) {
 				if (!EnchantmentHelper.getEnchantments(event.getItemStack()).containsKey(enchantment)) {
-//					cap.getHiddenMap().remove(enchantment);
 					continue;
 				}
 				Registry.ENCHANTMENT.getOptional(EnchantmentHelper.getEnchantmentId(enchantment)).ifPresent((p_41708_) -> {
@@ -44,7 +43,7 @@ public class HideEnchantsEvents {
 	@SubscribeEvent
 	static void attachcaps(AttachCapabilitiesEvent<ItemStack> event) {
     	if (event.getObject().isEnchantable() || event.getObject().isEnchanted() || event.getObject().getItem() instanceof EnchantedBookItem) {
-    		event.addCapability(new ResourceLocation(UnidentifiedEnchantments.MODID, "hiddenenchantments"), new HiddenEnchantProvider());
+    		event.addCapability(new ResourceLocation(UnidentifiedEnchantments.MODID, "hiddenenchantments"), new HiddenEnchantProvider(event.getObject()));
     	}
     	if( event.getObject().is(ItemRegistry.SCROLLOFIDENTIFICATION.get())) {
     		event.addCapability(new ResourceLocation(UnidentifiedEnchantments.MODID, "exp_storage"), new ExpStorageProvider());

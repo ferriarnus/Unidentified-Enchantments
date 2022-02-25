@@ -32,7 +32,11 @@ public class CurseLootModifier extends LootModifier{
 				if (stack.getItem() instanceof EnchantedBookItem) {
 					EnchantedBookItem.addEnchantment(stack, new EnchantmentInstance(EnchantmentRegistry.CURSELIST.get(new Random().nextInt(EnchantmentRegistry.CURSELIST.size())).get(), 1));
 				} else {
-					stack.enchant(EnchantmentRegistry.CURSELIST.get(new Random().nextInt(EnchantmentRegistry.CURSELIST.size())).get(), 1);
+					Enchantment pEnchantment = EnchantmentRegistry.CURSELIST.get(new Random().nextInt(EnchantmentRegistry.CURSELIST.size())).get();
+					while (!pEnchantment.canEnchant(stack)) {
+						pEnchantment = EnchantmentRegistry.CURSELIST.get(new Random().nextInt(EnchantmentRegistry.CURSELIST.size())).get();
+					}
+					stack.enchant(pEnchantment, 1);
 				}
 			}
 		}

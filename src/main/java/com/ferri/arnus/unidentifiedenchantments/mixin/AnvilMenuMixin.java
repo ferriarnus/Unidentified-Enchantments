@@ -1,5 +1,7 @@
 package com.ferri.arnus.unidentifiedenchantments.mixin;
 
+import java.util.Map;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -13,6 +15,7 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.ItemCombinerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.enchantment.Enchantment;
 
 @Mixin(AnvilMenu.class)
 public abstract class AnvilMenuMixin extends ItemCombinerMenu {
@@ -28,7 +31,9 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu {
 				this.inputSlots.getItem(1).getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(book -> {
 					if (!book.getHiddenMap().isEmpty()) {
 						this.resultSlots.getItem(0).getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(stack -> {
-							stack.getHiddenMap().putAll(book.getHiddenMap());
+							Map<Enchantment, String> hiddenMap = stack.getHiddenMap();
+							hiddenMap.putAll(book.getHiddenMap());
+							stack.setHiddenMap(hiddenMap);
 						});
 					}
 				});

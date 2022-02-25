@@ -10,18 +10,22 @@ import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class HiddenEnchantments implements IHiddenEnchantments{
 	
 	private Map<Enchantment,String> hiddenmap = new HashMap<Enchantment, String>();
+	private final ItemStack stack;
 	private final Random random = new Random();
 	private final String[] words = new String[]{"the", "elder", "scrolls", "klaatu", "berata", "niktu", "xyzzy", "bless", "curse", "light", "darkness", "fire", "air", "earth", "water", "hot", "dry", "cold", "wet", "ignite", "snuff", "embiggen", "twist", "shorten", "stretch", "fiddle", "destroy", "imbue", "galvanize", "enchant", "free", "limited", "range", "of", "towards", "inside", "sphere", "cube", "self", "other", "ball", "mental", "physical", "grow", "shrink", "demon", "elemental", "spirit", "animal", "creature", "beast", "humanoid", "undead", "fresh", "stale", "phnglui", "mglwnafh", "cthulhu", "rlyeh", "wgahnagl", "fhtagn", "baguette"};
 
-	@Override
-	public CompoundTag serializeNBT() {
-		CompoundTag tag = new CompoundTag();
+	public HiddenEnchantments(ItemStack stack) {
+		this.stack = stack;
+	}
+	
+	public void setHiddenMap(Map<Enchantment,String> hiddenmap) {
 		ListTag listtag = new ListTag();
 		
 		for(Enchantment enchantment : hiddenmap.keySet()) {
@@ -33,17 +37,15 @@ public class HiddenEnchantments implements IHiddenEnchantments{
 			}
 		}
 		if (listtag.isEmpty()) {
-			tag.remove("HiddenEnchantments");
+			stack.getOrCreateTag().remove("HiddenEnchantments");
 		} else {
-			tag.put("HiddenEnchantments", listtag);
+			stack.getOrCreateTag().put("HiddenEnchantments", listtag);
 		}
-		return tag;
 	}
 
-	@Override
-	public void deserializeNBT(CompoundTag nbt) {
+	public Map<Enchantment,String> getHiddenMap() {
 		Map<Enchantment, String> map = Maps.newLinkedHashMap();
-		ListTag listtag = nbt.getList("HiddenEnchantments", 10);
+		ListTag listtag = stack.getOrCreateTag().getList("HiddenEnchantments", 10);
 		
 		for(int i = 0; i < listtag.size(); ++i) {
 			CompoundTag compoundtag = listtag.getCompound(i);
@@ -51,16 +53,18 @@ public class HiddenEnchantments implements IHiddenEnchantments{
 				map.put(enc, compoundtag.getString("text"));
 			});
 		}
-		hiddenmap = map;
-	}
-	
-	@Override
-	public Map<Enchantment,String> getHiddenMap() {
-		return hiddenmap;
+		return map;
 	}
 	
 	public void add(Enchantment enchantment) {
-		hiddenmap.put(enchantment, getRandomName(75));
+		Map<Enchantment, String> map = this.getHiddenMap();
+		map.put(enchantment, getRandomName(75));
+		this.setHiddenMap(map);
+		
+	}
+	
+	public void clearHiddenMap() {
+		stack.getOrCreateTag().remove("HiddenEnchantments");
 	}
 	
 	public String getRandomName(int pMaxWidth) {

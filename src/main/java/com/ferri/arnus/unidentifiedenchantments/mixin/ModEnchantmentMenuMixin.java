@@ -1,5 +1,7 @@
 package com.ferri.arnus.unidentifiedenchantments.mixin;
 
+import java.util.Map;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -13,6 +15,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 
 @Mixin(ModEnchantmentMenu.class)
@@ -24,7 +27,9 @@ public class ModEnchantmentMenuMixin {
 		if (!slots.get(2).getItem().isEmpty()) {
 			slots.get(0).getItem().getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(cap1 -> {
 				slots.get(2).getItem().getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(cap2 -> {
-					cap1.getHiddenMap().putAll(cap2.getHiddenMap());
+					Map<Enchantment, String> hiddenMap = cap1.getHiddenMap();
+					hiddenMap.putAll(cap2.getHiddenMap());
+					cap1.setHiddenMap(hiddenMap);
 				});
 			});
 		}

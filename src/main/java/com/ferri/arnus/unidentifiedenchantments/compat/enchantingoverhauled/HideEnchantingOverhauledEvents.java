@@ -49,7 +49,7 @@ public class HideEnchantingOverhauledEvents {
 	@SubscribeEvent
 	static void attachcaps(AttachCapabilitiesEvent<ItemStack> event) {
     	if (event.getObject().getItem() instanceof EnchantedTomeItem) {
-    		event.addCapability(new ResourceLocation(UnidentifiedEnchantments.MODID, "hiddenenchantments"), new HiddenEnchantProvider());
+    		event.addCapability(new ResourceLocation(UnidentifiedEnchantments.MODID, "hiddenenchantments"), new HiddenEnchantProvider(event.getObject()));
     	}
     }
 	
