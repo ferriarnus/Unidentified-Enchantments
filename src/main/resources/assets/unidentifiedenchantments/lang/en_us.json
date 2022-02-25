@@ -10,5 +10,7 @@
   "enchantment.unidentifiedenchantments.weightcurse.desc": "Decreases movementspeed in water",
   "enchantment.unidentifiedenchantments.insomniacurse.desc": "Causes you to always think a mob is close, making you unable to sleep",
   "enchantment.unidentifiedenchantments.vanitycurse.desc": "Does nothing, but it looked pretty",
-  "enchantment.unidentifiedenchantments.madnesscurse.desc": "Causes a creeper to appear every so often, only you can see it, and it does not cause damage."
+  "enchantment.unidentifiedenchantments.madnesscurse.desc": "Causes a creeper to appear every so often, only you can see it, and it does not cause damage.",
+  
+  "entity.unidentifiedenchantments.fakecreeper":"Creeper"
 }
