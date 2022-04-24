@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class EnchantingOverhauledLootRegistry {
 	
-	public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, UnidentifiedEnchantments.MODID);
+	public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, UnidentifiedEnchantments.MODID);
 	
 	public static void register() {
 		GLM.register(FMLJavaModLoadingContext.get().getModEventBus());
