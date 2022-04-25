@@ -1,5 +1,6 @@
 package com.ferri.arnus.unidentifiedenchantments;
 
+import com.ferri.arnus.unidentifiedenchantments.command.GlobalLootTableCommand;
 import com.ferri.arnus.unidentifiedenchantments.compat.enchantingoverhauled.EnchantingOverhauledLootRegistry;
 import com.ferri.arnus.unidentifiedenchantments.compat.enchantingoverhauled.HideEnchantingOverhauledEvents;
 import com.ferri.arnus.unidentifiedenchantments.enchantment.EnchantmentRegistry;
@@ -15,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,6 +37,7 @@ public class UnidentifiedEnchantments {
         
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::renders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerAttributes);
+        MinecraftForge.EVENT_BUS.addListener(this::registerCommands);
         
         if(FMLLoader.getLoadingModList().getModFileById("enchanting_overhauled") != null) {
         	MinecraftForge.EVENT_BUS.register(HideEnchantingOverhauledEvents.class);
@@ -49,12 +52,16 @@ public class UnidentifiedEnchantments {
 	private void registerAttributes(EntityAttributeCreationEvent event) {
     	event.put(EntityRegistry.FAKECREEPER.get(), Creeper.createAttributes().build());
     }
+	
+	private void registerCommands(RegisterCommandsEvent event) {
+		GlobalLootTableCommand.register(event.getDispatcher());
+	}
 
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD, modid = MODID)
     public static class RegistryEvents {
     	@SubscribeEvent
         static void registerLootData(RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
             Registry.register(Registry.LOOT_CONDITION_TYPE, new ResourceLocation(UnidentifiedEnchantments.MODID,"chest_condition"), ChestCondition.HIDDEN_CHEST);
-        }
+        }    	
     }
 }
