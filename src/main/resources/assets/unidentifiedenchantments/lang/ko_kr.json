@@ -6,6 +6,8 @@
   "enchantment.unidentifiedenchantments.vanitycurse": "허영 저주",
   "enchantment.unidentifiedenchantments.madnesscurse": "착란 저주",
   
+  "item.unidentifiedenchantments.scrollofidentification.level": "현재 %1$s 레벨, 활성화 시 %2$s 레벨 필요",
+  "item.unidentifiedenchantments.scrollofidentification.desc": "원하는 아이템 위에 올려 감정합니다.",
   "enchantment.unidentifiedenchantments.hungercurse.desc": "허기가 더 빨리 감소합니다",
   "enchantment.unidentifiedenchantments.weightcurse.desc": "물 속에서 이동속도가 감소합니다",
   "enchantment.unidentifiedenchantments.insomniacurse.desc": "언제나 몬스터가 가까이 있는 걸로 취급되어, 잠을 잘 수 없습니다",
