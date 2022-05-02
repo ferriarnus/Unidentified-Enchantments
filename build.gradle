@@ -26,7 +26,7 @@ mixin {
     add sourceSets.main, 'mixins.unidentifiedenchantments.refmap.json'
 }
 
-version = '1.0.5'
+version = '1.0.8'
 group = 'com.ferri.arnus.unidentifiedenchantments' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'unidentifiedenchantments'
 
@@ -165,10 +165,10 @@ dependencies {
     
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
     
-    compileOnly fg.deobf("curse.maven:enchantingoverhauled-565463:3656839")
-    compileOnly fg.deobf("mezz.jei:jei-1.18.2:9.5.0.125")
+    //compileOnly fg.deobf("curse.maven:enchantingoverhauled-565463:3656839")
+    compileOnly fg.deobf("mezz.jei:jei-1.18.2-forge:10.0.0.191")
     
-    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.5.0.125")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2-forge:10.0.0.191")
     
     //runtimeOnly fg.deobf("curse.maven:apotheosis-313970:3647864")
     //runtimeOnly fg.deobf("curse.maven:enchantmentdescriptions-250419:3615621")

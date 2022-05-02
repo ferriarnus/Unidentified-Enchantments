@@ -15,7 +15,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.advanced.IRecipeManagerPlugin;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe;
-import mezz.jei.plugins.vanilla.anvil.AnvilRecipe;
+import mezz.jei.common.plugins.vanilla.anvil.AnvilRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;

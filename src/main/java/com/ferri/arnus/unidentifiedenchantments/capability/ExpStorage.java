@@ -13,6 +13,14 @@ public class ExpStorage implements INBTSerializable<CompoundTag>{
 		}
 	}
 	
+	public int getLevel() {
+		return level;
+	}
+	
+	public int getMaxLevel() {
+		return maxlevel;
+	}
+	
 	public void setMaxLevel(int maxlevel) {
 		this.maxlevel = maxlevel;
 	}

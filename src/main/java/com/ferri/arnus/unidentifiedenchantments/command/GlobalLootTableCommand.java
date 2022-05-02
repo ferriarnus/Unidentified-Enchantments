@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
@@ -18,8 +19,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.bridge.game.PackType;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 
 import net.minecraft.SharedConstants;
 import net.minecraft.commands.CommandSourceStack;
@@ -36,8 +41,8 @@ public class GlobalLootTableCommand {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	
 	public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-		dispatcher.register(Commands.literal("globalloot").executes(e -> sendLoot(e, ""))
-				.then(Commands.argument("replace", StringArgumentType.string()).executes(e -> sendLoot(e, StringArgumentType.getString(e, "replace")))));
+		dispatcher.register(Commands.literal("globalloot").executes(e -> sendLoot(e, "")).requires(r -> r.hasPermission(3))
+				.then(Commands.argument("replace", GlobalLootArgument.string()).executes(e -> sendLoot(e, GlobalLootArgument.getString(e, "replace")))));
 	}
 	
 	static int sendLoot(CommandContext<CommandSourceStack> commandContext, String s) {
@@ -137,5 +142,34 @@ public class GlobalLootTableCommand {
 		}
 		
 		return collection;
+	}
+	
+	private static class GlobalLootArgument implements ArgumentType<String> {
+		
+		public GlobalLootArgument() {
+			// TODO Auto-generated constructor stub
+		}
+		
+		public static GlobalLootArgument string() {
+			return new GlobalLootArgument();
+		}
+		
+		public static String getString(final CommandContext<?> context, final String name) {
+	        return context.getArgument(name, String.class);
+	    }
+
+		@Override
+		public String parse(StringReader reader) throws CommandSyntaxException {
+			return reader.readUnquotedString();
+		}
+		
+		@Override
+		public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context,
+				SuggestionsBuilder builder) {
+			builder.suggest("replace");
+			builder.suggest("delete");
+			return builder.buildFuture();
+		}
+		
 	}
 }

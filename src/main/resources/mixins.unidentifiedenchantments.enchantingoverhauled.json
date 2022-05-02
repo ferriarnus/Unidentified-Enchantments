@@ -5,8 +5,8 @@
   "refmap": "mixins.unidentifiedenchantments.refmap.json",
   "plugin": "com.ferri.arnus.unidentifiedenchantments.compat.enchantingoverhauled.EnchantingOverhauledPlugin",
   "mixins": [
-    "ModEnchantmentScreenMixin",
-    "ModEnchantmentMenuMixin"
+    //"ModEnchantmentScreenMixin",
+    //"ModEnchantmentMenuMixin"
   ],
   "minVersion": "0.8.4"
 }

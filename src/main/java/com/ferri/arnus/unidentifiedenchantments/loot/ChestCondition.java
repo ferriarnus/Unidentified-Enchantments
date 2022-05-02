@@ -28,16 +28,18 @@ public class ChestCondition implements LootItemCondition{
 
 		@Override
 		public boolean test(LootContext lootContext) {
-//			if (lootContext.getQueriedLootTableId().getPath().equals("dispensers")) return true;
-//			if (lootContext.getQueriedLootTableId().getPath().equals("shulker_boxes")) return true;
-//			if (lootContext.getQueriedLootTableId().getPath().equals("mansion")) return true;
+			if (lootContext.getQueriedLootTableId().getPath().equals("dispensers")) return true;
+			if (lootContext.getQueriedLootTableId().getPath().equals("barrels")) return true;
+			if (lootContext.getQueriedLootTableId().getPath().equals("shulker_boxes")) return true;
 			if (lootContext.getQueriedLootTableId().getPath().contains("urn_loot")) return true;
-//			if (lootContext.getQueriedLootTableId().getPath().contains("chests")) return true;
-			Vec3 param = lootContext.getParam(LootContextParams.ORIGIN);
-			BlockEntity blockEntity = lootContext.getLevel().getBlockEntity(new BlockPos(param));
-			if (blockEntity == null) return false;
-			if (blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).isPresent()) {
-				return true;
+			if (lootContext.getQueriedLootTableId().getPath().contains("chests")) return true;
+			if (lootContext.hasParam(LootContextParams.ORIGIN)) {
+				Vec3 param = lootContext.getParam(LootContextParams.ORIGIN);
+				BlockEntity blockEntity = lootContext.getLevel().getBlockEntity(new BlockPos(param));
+				if (blockEntity == null) return false;
+				if (blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).isPresent()) {
+					return true;
+				}
 			}
 			return false;
 		}

@@ -6,6 +6,8 @@
   "enchantment.unidentifiedenchantments.vanitycurse": "Curse of Vanity",
   "enchantment.unidentifiedenchantments.madnesscurse": "Curse of Madness",
   
+  "item.unidentifiedenchantments.scrollofidentification.level": "%1$s Levels from %2$s",
+  "item.unidentifiedenchantments.scrollofidentification.desc": "Pace on top of the item you want to identify",
   "enchantment.unidentifiedenchantments.hungercurse.desc": "Causes hunger to be depleted faster",
   "enchantment.unidentifiedenchantments.weightcurse.desc": "Decreases movementspeed in water",
   "enchantment.unidentifiedenchantments.insomniacurse.desc": "Causes you to always think a mob is close, making you unable to sleep",

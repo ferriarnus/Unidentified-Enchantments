@@ -1,5 +1,6 @@
 package com.ferri.arnus.unidentifiedenchantments.item;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -8,6 +9,9 @@ import com.ferri.arnus.unidentifiedenchantments.capability.ExpStorageProvider;
 import com.ferri.arnus.unidentifiedenchantments.capability.HiddenEnchantProvider;
 import com.ferri.arnus.unidentifiedenchantments.capability.IHiddenEnchantments;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -17,6 +21,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
@@ -84,6 +89,24 @@ public class ScrollOfIdentification extends Item{
 			}
 		}
 		return super.isFoil(p_41453_);
+	}
+	
+	@Override
+	public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
+			TooltipFlag pIsAdvanced) {
+		int level = 0;
+		int max = 0;
+		LazyOptional<ExpStorage> capability = pStack.getCapability(ExpStorageProvider.EXP_STORAGE);
+		if (capability.isPresent()) {
+			ExpStorage expStorage = capability.resolve().get();
+			level = expStorage.getLevel();
+			max = expStorage.getMaxLevel();
+		}
+		if (pStack.hasFoil()) {
+			pTooltipComponents.add(new TranslatableComponent("item.unidentifiedenchantments.scrollofidentification.desc").withStyle(ChatFormatting.GRAY));
+		} else {
+			pTooltipComponents.add(new TranslatableComponent("item.unidentifiedenchantments.scrollofidentification.level", level , max).withStyle(ChatFormatting.GRAY));
+		}
 	}
 
 }
