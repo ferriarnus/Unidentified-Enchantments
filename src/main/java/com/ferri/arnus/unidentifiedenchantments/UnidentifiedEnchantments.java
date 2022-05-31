@@ -1,6 +1,7 @@
 package com.ferri.arnus.unidentifiedenchantments;
 
 import com.ferri.arnus.unidentifiedenchantments.command.GlobalLootTableCommand;
+import com.ferri.arnus.unidentifiedenchantments.config.UnidentifiedEnchantmentsConfig;
 import com.ferri.arnus.unidentifiedenchantments.enchantment.EnchantmentRegistry;
 import com.ferri.arnus.unidentifiedenchantments.entity.EntityRegistry;
 import com.ferri.arnus.unidentifiedenchantments.item.ItemRegistry;
@@ -18,7 +19,9 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -35,6 +38,8 @@ public class UnidentifiedEnchantments {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::renders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerAttributes);
         MinecraftForge.EVENT_BUS.addListener(this::registerCommands);
+        
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, UnidentifiedEnchantmentsConfig.SPEC);
         
 //        if(FMLLoader.getLoadingModList().getModFileById("enchanting_overhauled") != null) {
 //        	MinecraftForge.EVENT_BUS.register(HideEnchantingOverhauledEvents.class);

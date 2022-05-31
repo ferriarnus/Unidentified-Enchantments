@@ -21,12 +21,11 @@ apply plugin: 'org.spongepowered.mixin'
 mixin {
     // MixinGradle Settings
     config "mixins.unidentifiedenchantments.json"
-    config "mixins.unidentifiedenchantments.enchantingoverhauled.json"
     
     add sourceSets.main, 'mixins.unidentifiedenchantments.refmap.json'
 }
 
-version = '1.0.8'
+version = '1.0.9'
 group = 'com.ferri.arnus.unidentifiedenchantments' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'unidentifiedenchantments'
 

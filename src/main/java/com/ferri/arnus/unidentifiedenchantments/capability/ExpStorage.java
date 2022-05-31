@@ -1,11 +1,17 @@
 package com.ferri.arnus.unidentifiedenchantments.capability;
 
+import com.ferri.arnus.unidentifiedenchantments.config.UnidentifiedEnchantmentsConfig;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.util.INBTSerializable;
 
 public class ExpStorage implements INBTSerializable<CompoundTag>{
 	private int level;
-	private int maxlevel = 5;
+	private int maxlevel;
+	
+	public ExpStorage() {
+		maxlevel = UnidentifiedEnchantmentsConfig.MAXLEVEL.get();
+	}
 	
 	public void addLevel(int level) {
 		if (this.level < this.maxlevel) {
