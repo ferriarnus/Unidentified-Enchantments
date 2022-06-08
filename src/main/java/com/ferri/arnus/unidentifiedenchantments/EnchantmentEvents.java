@@ -33,9 +33,9 @@ public class EnchantmentEvents {
 			FakeCreeper creeper = EntityRegistry.FAKECREEPER.get().create(event.player.level);
 			creeper.setPlayer(event.player);
 			for(int i = 0; i < 16; ++i) {
-				double d3 = event.player.getX() + (event.player.getRandom().nextDouble() - 0.5D) * 16.0D;
-				double d4 = Mth.clamp(event.player.getY() + (double)(event.player.getRandom().nextInt(16) - 8), (double)event.player.level.getMinBuildHeight(), (double)(event.player.level.getMinBuildHeight() + ((ServerLevel)event.player.level).getLogicalHeight() - 1));
-				double d5 = event.player.getZ() + (event.player.getRandom().nextDouble() - 0.5D) * 16.0D;
+				double d3 = event.player.getX() + (event.player.level.random.m_188500_() - 0.5D) * 16.0D;
+				double d4 = Mth.clamp(event.player.getY() + (double)(event.player.level.random.m_188503_(16) - 8), (double)event.player.level.getMinBuildHeight(), (double)(event.player.level.getMinBuildHeight() + ((ServerLevel)event.player.level).getLogicalHeight() - 1));
+				double d5 = event.player.getZ() + (event.player.level.random.m_188500_() - 0.5D) * 16.0D;
 				if (creeper.randomTeleport(d3, d4, d5, false)) {
 					break;
 				}

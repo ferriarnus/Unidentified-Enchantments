@@ -36,7 +36,7 @@ public class FakeCreeper extends Creeper implements IEntityAdditionalSpawnData{
 	}
 	
 	public void setPlayer(Player player) {
-		this.player = player.getUUID();
+		this.player = player.m_20148_();
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public class FakeCreeper extends Creeper implements IEntityAdditionalSpawnData{
 		if (this.player == null) {
 			return true;
 		}
-		if (p_20178_.getUUID().equals(this.player)) {
+		if (p_20178_.m_20148_().equals(this.player)) {
 			return false;
 		}
 		return true;
@@ -60,7 +60,7 @@ public class FakeCreeper extends Creeper implements IEntityAdditionalSpawnData{
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.8D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, p -> p.getUUID().equals(player)));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, p -> p.m_20148_().equals(player)));
 	}
 
 	@Override

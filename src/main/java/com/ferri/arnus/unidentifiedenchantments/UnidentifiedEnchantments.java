@@ -1,5 +1,6 @@
 package com.ferri.arnus.unidentifiedenchantments;
 
+import com.ferri.arnus.unidentifiedenchantments.command.CommandRegistry;
 import com.ferri.arnus.unidentifiedenchantments.command.GlobalLootTableCommand;
 import com.ferri.arnus.unidentifiedenchantments.config.UnidentifiedEnchantmentsConfig;
 import com.ferri.arnus.unidentifiedenchantments.enchantment.EnchantmentRegistry;
@@ -14,9 +15,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -24,6 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegisterEvent;
 
 @Mod(UnidentifiedEnchantments.MODID)
 public class UnidentifiedEnchantments {
@@ -34,6 +34,7 @@ public class UnidentifiedEnchantments {
         EntityRegistry.register();
         EnchantmentRegistry.register();
         LootRegistry.register();
+        CommandRegistry.register();
         
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::renders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerAttributes);
@@ -58,12 +59,12 @@ public class UnidentifiedEnchantments {
 	private void registerCommands(RegisterCommandsEvent event) {
 		GlobalLootTableCommand.register(event.getDispatcher());
 	}
-
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD, modid = MODID)
+	
+	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD, modid = MODID)
     public static class RegistryEvents {
     	@SubscribeEvent
-        static void registerLootData(RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
-            Registry.register(Registry.LOOT_CONDITION_TYPE, new ResourceLocation(UnidentifiedEnchantments.MODID,"chest_condition"), ChestCondition.HIDDEN_CHEST);
+        static void registerLootData(RegisterEvent event) {
+    		event.register(Registry.LOOT_ITEM_REGISTRY, new ResourceLocation(UnidentifiedEnchantments.MODID,"chest_condition"), () -> ChestCondition.HIDDEN_CHEST);
         }    	
     }
 }

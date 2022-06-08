@@ -2,13 +2,15 @@ package com.ferri.arnus.unidentifiedenchantments.loot;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import org.jetbrains.annotations.NotNull;
 
 import com.ferri.arnus.unidentifiedenchantments.enchantment.EnchantmentRegistry;
 import com.google.gson.JsonObject;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
@@ -28,7 +30,7 @@ public class CurseLootModifier extends LootModifier{
 	}
 
 	@Override
-	protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+	protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 		for (ItemStack stack : generatedLoot) {
 			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
 			if(0.15 + 0.1*enchantments.size() > new Random().nextDouble() && (!EnchantmentHelper.getAvailableEnchantmentResults(1, stack, true).isEmpty() || stack.getItem() instanceof EnchantedBookItem)) {
@@ -62,4 +64,5 @@ public class CurseLootModifier extends LootModifier{
 		}
 		
 	}
+
 }

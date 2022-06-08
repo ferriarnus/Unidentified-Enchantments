@@ -68,8 +68,8 @@ public class GlobalLootTableCommand {
 				//reload
 				WorldData worlddata = commandContext.getSource().getServer().getWorldData();
 				Collection<String> collection = commandContext.getSource().getServer().getPackRepository().getSelectedIds();
-		        Collection<String> collection1 = discoverNewPacks(commandContext.getSource().getServer().getPackRepository(), worlddata, collection);
-		        commandContext.getSource().getServer().reloadResources(collection1);
+				Collection<String> collection1 = discoverNewPacks(commandContext.getSource().getServer().getPackRepository(), worlddata, collection);
+				commandContext.getSource().getServer().reloadResources(collection1);
 			} else if (s.equals("")) {
 				Path path = Paths.get("config/global_loot_modifiers.json");
 				Files.createDirectories(path.getParent());
@@ -82,8 +82,8 @@ public class GlobalLootTableCommand {
 				//reload
 				WorldData worlddata = commandContext.getSource().getServer().getWorldData();
 				Collection<String> collection = commandContext.getSource().getServer().getPackRepository().getSelectedIds();
-		        Collection<String> collection1 = discoverNewPacks(commandContext.getSource().getServer().getPackRepository(), worlddata, collection);
-		        commandContext.getSource().getServer().reloadResources(collection1);
+				Collection<String> collection1 = discoverNewPacks(commandContext.getSource().getServer().getPackRepository(), worlddata, collection);
+				commandContext.getSource().getServer().reloadResources(collection1);
 			}
 			
 		} catch (IOException e) {
@@ -144,24 +144,7 @@ public class GlobalLootTableCommand {
 		return collection;
 	}
 	
-	private static class GlobalLootArgument implements ArgumentType<String> {
-		
-		public GlobalLootArgument() {
-			// TODO Auto-generated constructor stub
-		}
-		
-		public static GlobalLootArgument string() {
-			return new GlobalLootArgument();
-		}
-		
-		public static String getString(final CommandContext<?> context, final String name) {
-	        return context.getArgument(name, String.class);
-	    }
-
-		@Override
-		public String parse(StringReader reader) throws CommandSyntaxException {
-			return reader.readUnquotedString();
-		}
+	public static class GlobalLootArgument implements ArgumentType<String> {
 		
 		@Override
 		public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context,
@@ -171,5 +154,21 @@ public class GlobalLootTableCommand {
 			return builder.buildFuture();
 		}
 		
+		public static GlobalLootArgument string() {
+			return new GlobalLootArgument();
+		}
+
+
+
+		@Override
+		public String parse(StringReader reader) throws CommandSyntaxException {
+			return reader.readUnquotedString();
+		}
+		
+		public static String getString(final CommandContext<?> context, final String name) {
+	        return context.getArgument(name, String.class);
+	    }
+		
 	}
+	
 }

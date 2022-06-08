@@ -1,10 +1,11 @@
 package com.ferri.arnus.unidentifiedenchantments.loot;
 
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 import com.ferri.arnus.unidentifiedenchantments.capability.HiddenEnchantProvider;
 import com.google.gson.JsonObject;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +23,7 @@ public class HiddenLootModifier extends LootModifier{
 	}
 
 	@Override
-	protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+	protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 		for (ItemStack stack : generatedLoot) {
 			if (stack.isEnchanted() || stack.getItem() instanceof EnchantedBookItem) {
 				stack.getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(cap -> {

@@ -6,9 +6,8 @@ import com.ferri.arnus.unidentifiedenchantments.item.ItemRegistry;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
@@ -34,7 +33,7 @@ public class HideEnchantsEvents {
 				}
 				Registry.ENCHANTMENT.getOptional(EnchantmentHelper.getEnchantmentId(enchantment)).ifPresent((p_41708_) -> {
 					int index = event.getToolTip().indexOf(p_41708_.getFullname(EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment)));
-					event.getToolTip().set(index, new TextComponent(cap.getHiddenMap().get(enchantment)).withStyle(ROOT_STYLE).withStyle(ChatFormatting.GRAY).append(" ").append(new TranslatableComponent("enchantment.level." + EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment))));
+					event.getToolTip().set(index, Component.m_237113_(cap.getHiddenMap().get(enchantment)).withStyle(ROOT_STYLE).withStyle(ChatFormatting.GRAY).append(" ").append(Component.m_237110_("enchantment.level." + EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment))));
 				});
 			}
 		});

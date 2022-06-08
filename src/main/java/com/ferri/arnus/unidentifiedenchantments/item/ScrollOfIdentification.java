@@ -11,7 +11,6 @@ import com.ferri.arnus.unidentifiedenchantments.capability.IHiddenEnchantments;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -103,9 +102,9 @@ public class ScrollOfIdentification extends Item{
 			max = expStorage.getMaxLevel();
 		}
 		if (pStack.hasFoil()) {
-			pTooltipComponents.add(new TranslatableComponent("item.unidentifiedenchantments.scrollofidentification.desc").withStyle(ChatFormatting.GRAY));
+			pTooltipComponents.add(Component.m_237115_("item.unidentifiedenchantments.scrollofidentification.desc").withStyle(ChatFormatting.GRAY));
 		} else {
-			pTooltipComponents.add(new TranslatableComponent("item.unidentifiedenchantments.scrollofidentification.level", level , max).withStyle(ChatFormatting.GRAY));
+			pTooltipComponents.add(Component.m_237110_("item.unidentifiedenchantments.scrollofidentification.level", level , max).withStyle(ChatFormatting.GRAY));
 		}
 	}
 
