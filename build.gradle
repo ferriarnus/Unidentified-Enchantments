@@ -25,7 +25,7 @@ mixin {
     add sourceSets.main, 'mixins.unidentifiedenchantments.refmap.json'
 }
 
-version = '1.0.10'
+version = '1.0.11'
 group = 'com.ferri.arnus.unidentifiedenchantments' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'unidentifiedenchantments'
 
@@ -148,7 +148,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.19-41.0.1'
+    minecraft 'net.minecraftforge:forge:1.19-41.0.29'
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -165,9 +165,9 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
     
     //compileOnly fg.deobf("curse.maven:enchantingoverhauled-565463:3656839")
-    //compileOnly fg.deobf("mezz.jei:jei-1.18.2-forge:10.0.0.191")
+    compileOnly fg.deobf("mezz.jei:jei-1.19-forge:11.0.0.206")
     
-    //runtimeOnly fg.deobf("mezz.jei:jei-1.18.2-forge:10.0.0.191")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:11.0.0.206")
     
     //runtimeOnly fg.deobf("curse.maven:apotheosis-313970:3647864")
     //runtimeOnly fg.deobf("curse.maven:enchantmentdescriptions-250419:3615621")
