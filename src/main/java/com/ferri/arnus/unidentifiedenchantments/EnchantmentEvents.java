@@ -18,7 +18,7 @@ import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
-import net.minecraftforge.event.world.ExplosionEvent;
+import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
@@ -54,14 +54,14 @@ public class EnchantmentEvents {
 	
 	@SubscribeEvent
 	static void weight(LivingEquipmentChangeEvent event) {
-		if (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.WEIGHTCURSE.get(), event.getTo()) != 0 && EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.WEIGHTCURSE.get(), event.getEntityLiving()) != null) {
-			AttributeInstance attributeinstance = event.getEntityLiving().getAttribute(ForgeMod.SWIM_SPEED.get());
+		if (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.WEIGHTCURSE.get(), event.getTo()) != 0 && EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.WEIGHTCURSE.get(), event.getEntity()) != null) {
+			AttributeInstance attributeinstance = event.getEntity().getAttribute(ForgeMod.SWIM_SPEED.get());
 			if (attributeinstance != null && attributeinstance.getModifier(SPEED_MODIFIER_CURSE_UUID) == null) {
 				attributeinstance.addTransientModifier(new AttributeModifier(SPEED_MODIFIER_CURSE_UUID,"curse weight", -0.40, AttributeModifier.Operation.MULTIPLY_TOTAL));
 			}
 		}
-		if (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.WEIGHTCURSE.get(), event.getFrom()) >= 0 && EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.WEIGHTCURSE.get(), event.getEntityLiving()) == null) {
-			AttributeInstance attributeinstance = event.getEntityLiving().getAttribute(ForgeMod.SWIM_SPEED.get());
+		if (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.WEIGHTCURSE.get(), event.getFrom()) >= 0 && EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.WEIGHTCURSE.get(), event.getEntity()) == null) {
+			AttributeInstance attributeinstance = event.getEntity().getAttribute(ForgeMod.SWIM_SPEED.get());
 			if (attributeinstance != null) {
 				if(attributeinstance.getModifier(SPEED_MODIFIER_CURSE_UUID) != null) {
 					attributeinstance.removeModifier(SPEED_MODIFIER_CURSE_UUID);
@@ -72,7 +72,7 @@ public class EnchantmentEvents {
 	
 	@SubscribeEvent
 	static void sleep(PlayerSleepInBedEvent event) {
-		if (EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.INSOMNIACURSE.get(), event.getEntityLiving()) != null) {
+		if (EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.INSOMNIACURSE.get(), event.getEntity()) != null) {
 			event.setResult(BedSleepingProblem.NOT_SAFE);
 		}
 	}

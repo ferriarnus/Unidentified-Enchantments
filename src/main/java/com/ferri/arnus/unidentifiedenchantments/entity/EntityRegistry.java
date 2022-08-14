@@ -11,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class EntityRegistry {
 
-	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, UnidentifiedEnchantments.MODID);
+	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, UnidentifiedEnchantments.MODID);
 	
 	public static void register() {
 		ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());

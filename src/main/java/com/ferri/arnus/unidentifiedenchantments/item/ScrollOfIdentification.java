@@ -26,6 +26,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.LazyOptional;
 
+import net.minecraft.world.item.Item.Properties;
+
 public class ScrollOfIdentification extends Item{
 
 	public ScrollOfIdentification() {
