@@ -1,7 +1,5 @@
 package com.ferri.arnus.unidentifiedenchantments.entity;
 
-import java.util.UUID;
-
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
@@ -21,6 +19,8 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 
+import java.util.UUID;
+
 public class FakeCreeper extends Creeper implements IEntityAdditionalSpawnData{
 	
 	private UUID player = UUID.randomUUID();
@@ -36,7 +36,7 @@ public class FakeCreeper extends Creeper implements IEntityAdditionalSpawnData{
 	}
 	
 	public void setPlayer(Player player) {
-		this.player = player.m_20148_();
+		this.player = player.getUUID();
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public class FakeCreeper extends Creeper implements IEntityAdditionalSpawnData{
 		if (this.player == null) {
 			return true;
 		}
-		if (p_20178_.m_20148_().equals(this.player)) {
+		if (p_20178_.getUUID().equals(this.player)) {
 			return false;
 		}
 		return true;
@@ -60,7 +60,7 @@ public class FakeCreeper extends Creeper implements IEntityAdditionalSpawnData{
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.8D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, p -> p.m_20148_().equals(player)));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, p -> p.getUUID().equals(player)));
 	}
 
 	@Override

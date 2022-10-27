@@ -1,12 +1,8 @@
 package com.ferri.arnus.unidentifiedenchantments;
 
-import java.util.Random;
-import java.util.UUID;
-
 import com.ferri.arnus.unidentifiedenchantments.enchantment.EnchantmentRegistry;
 import com.ferri.arnus.unidentifiedenchantments.entity.EntityRegistry;
 import com.ferri.arnus.unidentifiedenchantments.entity.FakeCreeper;
-
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -22,6 +18,9 @@ import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
+import java.util.Random;
+import java.util.UUID;
+
 @EventBusSubscriber(modid = UnidentifiedEnchantments.MODID)
 public class EnchantmentEvents {
 		
@@ -33,9 +32,9 @@ public class EnchantmentEvents {
 			FakeCreeper creeper = EntityRegistry.FAKECREEPER.get().create(event.player.level);
 			creeper.setPlayer(event.player);
 			for(int i = 0; i < 16; ++i) {
-				double d3 = event.player.getX() + (event.player.level.random.m_188500_() - 0.5D) * 16.0D;
-				double d4 = Mth.clamp(event.player.getY() + (double)(event.player.level.random.m_188503_(16) - 8), (double)event.player.level.getMinBuildHeight(), (double)(event.player.level.getMinBuildHeight() + ((ServerLevel)event.player.level).getLogicalHeight() - 1));
-				double d5 = event.player.getZ() + (event.player.level.random.m_188500_() - 0.5D) * 16.0D;
+				double d3 = event.player.getX() + (event.player.level.random.nextDouble() - 0.5D) * 16.0D;
+				double d4 = Mth.clamp(event.player.getY() + (double)(event.player.level.random.nextInt(16) - 8), (double)event.player.level.getMinBuildHeight(), (double)(event.player.level.getMinBuildHeight() + ((ServerLevel)event.player.level).getLogicalHeight() - 1));
+				double d5 = event.player.getZ() + (event.player.level.random.nextDouble() - 0.5D) * 16.0D;
 				if (creeper.randomTeleport(d3, d4, d5, false)) {
 					break;
 				}

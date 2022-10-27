@@ -33,7 +33,7 @@ public class HideEnchantsEvents {
 				}
 				Registry.ENCHANTMENT.getOptional(EnchantmentHelper.getEnchantmentId(enchantment)).ifPresent((p_41708_) -> {
 					int index = event.getToolTip().indexOf(p_41708_.getFullname(EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment)));
-					event.getToolTip().set(index, Component.m_237113_(cap.getHiddenMap().get(enchantment)).withStyle(ROOT_STYLE).withStyle(ChatFormatting.GRAY).append(" ").append(Component.m_237110_("enchantment.level." + EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment))));
+					event.getToolTip().set(index, Component.literal(cap.getHiddenMap().get(enchantment)).withStyle(ROOT_STYLE).withStyle(ChatFormatting.GRAY).append(" ").append(Component.translatable("enchantment.level." + EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment))));
 				});
 			}
 		});

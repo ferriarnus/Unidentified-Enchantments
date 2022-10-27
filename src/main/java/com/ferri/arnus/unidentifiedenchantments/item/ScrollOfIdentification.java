@@ -1,14 +1,9 @@
 package com.ferri.arnus.unidentifiedenchantments.item;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
 import com.ferri.arnus.unidentifiedenchantments.capability.ExpStorage;
 import com.ferri.arnus.unidentifiedenchantments.capability.ExpStorageProvider;
 import com.ferri.arnus.unidentifiedenchantments.capability.HiddenEnchantProvider;
 import com.ferri.arnus.unidentifiedenchantments.capability.IHiddenEnchantments;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -26,7 +21,9 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.LazyOptional;
 
-import net.minecraft.world.item.Item.Properties;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class ScrollOfIdentification extends Item{
 
@@ -104,9 +101,9 @@ public class ScrollOfIdentification extends Item{
 			max = expStorage.getMaxLevel();
 		}
 		if (pStack.hasFoil()) {
-			pTooltipComponents.add(Component.m_237115_("item.unidentifiedenchantments.scrollofidentification.desc").withStyle(ChatFormatting.GRAY));
+			pTooltipComponents.add(Component.translatable("item.unidentifiedenchantments.scrollofidentification.desc").withStyle(ChatFormatting.GRAY));
 		} else {
-			pTooltipComponents.add(Component.m_237110_("item.unidentifiedenchantments.scrollofidentification.level", level , max).withStyle(ChatFormatting.GRAY));
+			pTooltipComponents.add(Component.translatable("item.unidentifiedenchantments.scrollofidentification.level", level , max).withStyle(ChatFormatting.GRAY));
 		}
 	}
 
