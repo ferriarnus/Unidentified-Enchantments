@@ -1,0 +1,18 @@
+{
+  "item.unidentifiedenchantments.scrollofidentification": "识别卷轴",
+  "enchantment.unidentifiedenchantments.hungercurse": "饥饿诅咒",
+  "enchantment.unidentifiedenchantments.weightcurse": "沉重诅咒",
+  "enchantment.unidentifiedenchantments.insomniacurse": "失眠诅咒",
+  "enchantment.unidentifiedenchantments.vanitycurse": "虚荣诅咒",
+  "enchantment.unidentifiedenchantments.madnesscurse": "疯狂诅咒",
+  
+  "item.unidentifiedenchantments.scrollofidentification.level": "%等级1$s到%2$s",
+  "item.unidentifiedenchantments.scrollofidentification.desc": "放在您想识别的附魔物品上",
+  "enchantment.unidentifiedenchantments.hungercurse.desc": "饱持度掉的更快",
+  "enchantment.unidentifiedenchantments.weightcurse.desc": "降低在水中的速度",
+  "enchantment.unidentifiedenchantments.insomniacurse.desc": "让你永远觉得附近有怪物在游荡，无法睡觉",
+  "enchantment.unidentifiedenchantments.vanitycurse.desc": "没有任何用处，能让您的的普通装备看上去像是附了魔",
+  "enchantment.unidentifiedenchantments.madnesscurse.desc": "每隔一段时间会出现一个没有任何伤害的苦力怕",
+  
+  "entity.unidentifiedenchantments.fakecreeper":"苦力怕"
+}
