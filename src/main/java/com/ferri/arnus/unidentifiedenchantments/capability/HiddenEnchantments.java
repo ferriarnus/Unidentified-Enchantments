@@ -2,13 +2,13 @@ package com.ferri.arnus.unidentifiedenchantments.capability;
 
 import com.google.common.collect.Maps;
 import net.minecraft.Util;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,8 +48,8 @@ public class HiddenEnchantments implements IHiddenEnchantments{
 		
 		for(int i = 0; i < listtag.size(); ++i) {
 			CompoundTag compoundtag = listtag.getCompound(i);
-			Registry.ENCHANTMENT.getOptional(EnchantmentHelper.getEnchantmentId(compoundtag)).ifPresent((enc) -> {
-				map.put(enc, compoundtag.getString("text"));
+			ForgeRegistries.ENCHANTMENTS.getDelegate(EnchantmentHelper.getEnchantmentId(compoundtag)).ifPresent((enc) -> {
+				map.put(enc.get(), compoundtag.getString("text"));
 			});
 		}
 		return map;

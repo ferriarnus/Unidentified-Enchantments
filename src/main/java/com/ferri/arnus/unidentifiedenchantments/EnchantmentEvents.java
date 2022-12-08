@@ -45,7 +45,7 @@ public class EnchantmentEvents {
 	
 	@SubscribeEvent
 	static void explode(ExplosionEvent.Detonate event) {
-		if (event.getExplosion().getSourceMob() instanceof FakeCreeper) {
+		if (event.getExplosion().getExploder() instanceof FakeCreeper) {
 			event.getAffectedEntities().clear();
 			event.getAffectedBlocks().clear();
 		}

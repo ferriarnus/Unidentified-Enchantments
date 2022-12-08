@@ -3,9 +3,7 @@ package com.ferri.arnus.unidentifiedenchantments;
 import com.ferri.arnus.unidentifiedenchantments.capability.ExpStorageProvider;
 import com.ferri.arnus.unidentifiedenchantments.capability.HiddenEnchantProvider;
 import com.ferri.arnus.unidentifiedenchantments.item.ItemRegistry;
-
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
@@ -18,6 +16,7 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @EventBusSubscriber
 public class HideEnchantsEvents {
@@ -31,8 +30,8 @@ public class HideEnchantsEvents {
 				if (!EnchantmentHelper.getEnchantments(event.getItemStack()).containsKey(enchantment)) {
 					continue;
 				}
-				Registry.ENCHANTMENT.getOptional(EnchantmentHelper.getEnchantmentId(enchantment)).ifPresent((p_41708_) -> {
-					int index = event.getToolTip().indexOf(p_41708_.getFullname(EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment)));
+				ForgeRegistries.ENCHANTMENTS.getDelegate(EnchantmentHelper.getEnchantmentId(enchantment)).ifPresent((p_41708_) -> {
+					int index = event.getToolTip().indexOf(p_41708_.get().getFullname(EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment)));
 					event.getToolTip().set(index, Component.literal(cap.getHiddenMap().get(enchantment)).withStyle(ROOT_STYLE).withStyle(ChatFormatting.GRAY).append(" ").append(Component.translatable("enchantment.level." + EnchantmentHelper.getEnchantments(event.getItemStack()).get(enchantment))));
 				});
 			}

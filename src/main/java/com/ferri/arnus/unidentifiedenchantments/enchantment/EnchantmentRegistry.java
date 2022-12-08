@@ -1,9 +1,6 @@
 package com.ferri.arnus.unidentifiedenchantments.enchantment;
 
-import java.util.ArrayList;
-
 import com.ferri.arnus.unidentifiedenchantments.UnidentifiedEnchantments;
-
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantment.Rarity;
@@ -12,6 +9,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
 
 public class EnchantmentRegistry {
 
@@ -28,6 +27,7 @@ public class EnchantmentRegistry {
 	public static final RegistryObject<InsomniaCurse> INSOMNIACURSE = ENCHANTMENTS.register("insomniacurse", () -> new InsomniaCurse(Rarity.RARE, EnchantmentCategory.ARMOR, ARMOR_SLOTS));
 	public static final RegistryObject<VanityCurse> VANITYCURSE = ENCHANTMENTS.register("vanitycurse", () -> new VanityCurse(Rarity.RARE, EnchantmentCategory.BREAKABLE, EquipmentSlot.values()));
 	public static final RegistryObject<MadnessCurse> MADNESSCURSE = ENCHANTMENTS.register("madnesscurse", () -> new MadnessCurse(Rarity.RARE, EnchantmentCategory.ARMOR, ARMOR_SLOTS));
+	public static final RegistryObject<BrittleCurse> BRITTLECURSE = ENCHANTMENTS.register("brittlecurse", () -> new BrittleCurse(Rarity.RARE, EnchantmentCategory.BREAKABLE, EquipmentSlot.values()));
 
 	static {
 		CURSELIST.add(HUNGERCURSE);
@@ -35,6 +35,7 @@ public class EnchantmentRegistry {
 		CURSELIST.add(INSOMNIACURSE);
 		CURSELIST.add(VANITYCURSE);
 		CURSELIST.add(MADNESSCURSE);
+		CURSELIST.add(BRITTLECURSE);
 	}
 	
 }

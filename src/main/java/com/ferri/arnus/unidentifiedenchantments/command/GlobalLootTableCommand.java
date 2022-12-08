@@ -1,16 +1,5 @@
 package com.ferri.arnus.unidentifiedenchantments.command;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,7 +14,6 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-
 import net.minecraft.SharedConstants;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -36,6 +24,17 @@ import net.minecraft.world.level.storage.WorldData;
 import net.minecraftforge.common.ForgeInternalHandler;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifierManager;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 public class GlobalLootTableCommand {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -133,7 +132,7 @@ public class GlobalLootTableCommand {
 	private static Collection<String> discoverNewPacks(PackRepository p_138223_, WorldData p_138224_, Collection<String> p_138225_) {
 		p_138223_.reload();
 		Collection<String> collection = Lists.newArrayList(p_138225_);
-		Collection<String> collection1 = p_138224_.getDataPackConfig().getDisabled();
+		Collection<String> collection1 = p_138224_.getDataConfiguration().dataPacks().getDisabled();
 		
 		for(String s : p_138223_.getAvailableIds()) {
 			if (!collection1.contains(s) && !collection.contains(s)) {

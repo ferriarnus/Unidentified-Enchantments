@@ -5,14 +5,16 @@
   "enchantment.unidentifiedenchantments.insomniacurse": "Curse of Insomnia",
   "enchantment.unidentifiedenchantments.vanitycurse": "Curse of Vanity",
   "enchantment.unidentifiedenchantments.madnesscurse": "Curse of Madness",
+  "enchantment.unidentifiedenchantments.brittlecurse": "Curse of Brittleness",
   
   "item.unidentifiedenchantments.scrollofidentification.level": "%1$s Levels from %2$s",
   "item.unidentifiedenchantments.scrollofidentification.desc": "Pace on top of the item you want to identify",
   "enchantment.unidentifiedenchantments.hungercurse.desc": "Causes hunger to be depleted faster",
-  "enchantment.unidentifiedenchantments.weightcurse.desc": "Decreases movementspeed in water",
+  "enchantment.unidentifiedenchantments.weightcurse.desc": "Decreases movement speed in water",
   "enchantment.unidentifiedenchantments.insomniacurse.desc": "Causes you to always think a mob is close, making you unable to sleep",
   "enchantment.unidentifiedenchantments.vanitycurse.desc": "Does nothing, but it looked pretty",
   "enchantment.unidentifiedenchantments.madnesscurse.desc": "Causes a creeper to appear every so often, only you can see it, and it does not cause damage.",
-  
+  "enchantment.unidentifiedenchantments.brittlecurse.desc": "Your tools loose durability faster",
+
   "entity.unidentifiedenchantments.fakecreeper":"Creeper"
 }

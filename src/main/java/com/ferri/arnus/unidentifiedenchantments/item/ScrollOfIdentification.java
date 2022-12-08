@@ -1,5 +1,6 @@
 package com.ferri.arnus.unidentifiedenchantments.item;
 
+import com.ferri.arnus.unidentifiedenchantments.UnidentifiedEnchantments;
 import com.ferri.arnus.unidentifiedenchantments.capability.ExpStorage;
 import com.ferri.arnus.unidentifiedenchantments.capability.ExpStorageProvider;
 import com.ferri.arnus.unidentifiedenchantments.capability.HiddenEnchantProvider;
@@ -12,23 +13,28 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = UnidentifiedEnchantments.MODID, value = Dist.CLIENT)
 public class ScrollOfIdentification extends Item{
 
 	public ScrollOfIdentification() {
-		super(new Properties().stacksTo(1).tab(CreativeModeTab.TAB_COMBAT));
+		super(new Properties().stacksTo(1));
 	}
 	
 	@Override
@@ -105,6 +111,11 @@ public class ScrollOfIdentification extends Item{
 		} else {
 			pTooltipComponents.add(Component.translatable("item.unidentifiedenchantments.scrollofidentification.level", level , max).withStyle(ChatFormatting.GRAY));
 		}
+	}
+
+	@SubscribeEvent
+	static void registerTab(CreativeModeTabEvent.BuildContents event) {
+		event.registerSimple(CreativeModeTabs.COMBAT, ItemRegistry.SCROLLOFIDENTIFICATION.get());
 	}
 
 }

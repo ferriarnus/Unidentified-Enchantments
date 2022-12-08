@@ -1,7 +1,6 @@
 package com.ferri.arnus.unidentifiedenchantments.entity;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -17,7 +16,6 @@ import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
-import net.minecraftforge.network.NetworkHooks;
 
 import java.util.UUID;
 
@@ -73,9 +71,9 @@ public class FakeCreeper extends Creeper implements IEntityAdditionalSpawnData{
 		this.player = additionalData.readUUID();
 	}
 	
-	@Override
-	public Packet<?> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
-	}
+//	@Override
+//	public Packet<?> getAddEntityPacket() {
+//		return NetworkHooks.getEntitySpawningPacket(this);
+//	}
 
 }
