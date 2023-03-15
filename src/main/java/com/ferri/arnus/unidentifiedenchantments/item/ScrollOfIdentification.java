@@ -115,7 +115,9 @@ public class ScrollOfIdentification extends Item{
 
 	@SubscribeEvent
 	static void registerTab(CreativeModeTabEvent.BuildContents event) {
-		event.registerSimple(CreativeModeTabs.COMBAT, ItemRegistry.SCROLLOFIDENTIFICATION.get());
+		if (event.getTab() == CreativeModeTabs.COMBAT) {
+			event.accept(ItemRegistry.SCROLLOFIDENTIFICATION.get());
+		}
 	}
 
 }

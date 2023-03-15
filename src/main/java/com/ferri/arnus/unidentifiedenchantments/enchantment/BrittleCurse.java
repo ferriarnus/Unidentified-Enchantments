@@ -29,12 +29,12 @@ public class BrittleCurse extends Enchantment {
     @Override
     public void doPostHurt(LivingEntity pTarget, Entity pAttacker, int pLevel) {
         Map.Entry<EquipmentSlot, ItemStack> brittle = EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.BRITTLECURSE.get(), pTarget);
-        brittle.getValue().setDamageValue(brittle.getValue().getDamageValue() + pTarget.level.random.nextInt(3));
+        brittle.getValue().setDamageValue(brittle.getValue().getDamageValue() + pTarget.level.random.nextInt(7));
     }
 
     @Override
     public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
         ItemStack brittle = pAttacker.getMainHandItem();
-        brittle.setDamageValue(brittle.getDamageValue() + pTarget.level.random.nextInt(3));
+        brittle.setDamageValue(brittle.getDamageValue() + pTarget.level.random.nextInt(7));
     }
 }

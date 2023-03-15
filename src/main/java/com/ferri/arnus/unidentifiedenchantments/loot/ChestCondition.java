@@ -34,7 +34,7 @@ public class ChestCondition implements LootItemCondition{
 			if (lootContext.getQueriedLootTableId().getPath().contains("chests")) return true;
 			if (lootContext.hasParam(LootContextParams.ORIGIN)) {
 				Vec3 param = lootContext.getParam(LootContextParams.ORIGIN);
-				BlockEntity blockEntity = lootContext.getLevel().getBlockEntity(new BlockPos(param));
+				BlockEntity blockEntity = lootContext.getLevel().getBlockEntity(BlockPos.containing(param));
 				if (blockEntity == null) return false;
 				if (blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent()) {
 					return true;
