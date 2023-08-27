@@ -28,18 +28,18 @@ public class EnchantmentEvents {
 	
 	@SubscribeEvent
 	static void madness(PlayerTickEvent event) {
-		if (EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.MADNESSCURSE.get(), event.player) != null && event.player.level.getGameTime() % 1200 == 0 && event.phase == Phase.END && !event.player.level.isClientSide && new Random().nextDouble() < 0.1) {
-			FakeCreeper creeper = EntityRegistry.FAKECREEPER.get().create(event.player.level);
+		if (EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.MADNESSCURSE.get(), event.player) != null && event.player.level().getGameTime() % 1200 == 0 && event.phase == Phase.END && !event.player.level().isClientSide && new Random().nextDouble() < 0.1) {
+			FakeCreeper creeper = EntityRegistry.FAKECREEPER.get().create(event.player.level());
 			creeper.setPlayer(event.player);
 			for(int i = 0; i < 16; ++i) {
-				double d3 = event.player.getX() + (event.player.level.random.nextDouble() - 0.5D) * 16.0D;
-				double d4 = Mth.clamp(event.player.getY() + (double)(event.player.level.random.nextInt(16) - 8), (double)event.player.level.getMinBuildHeight(), (double)(event.player.level.getMinBuildHeight() + ((ServerLevel)event.player.level).getLogicalHeight() - 1));
-				double d5 = event.player.getZ() + (event.player.level.random.nextDouble() - 0.5D) * 16.0D;
+				double d3 = event.player.getX() + (event.player.level().random.nextDouble() - 0.5D) * 16.0D;
+				double d4 = Mth.clamp(event.player.getY() + (double)(event.player.level().random.nextInt(16) - 8), (double)event.player.level().getMinBuildHeight(), (double)(event.player.level().getMinBuildHeight() + ((ServerLevel)event.player.level()).getLogicalHeight() - 1));
+				double d5 = event.player.getZ() + (event.player.level().random.nextDouble() - 0.5D) * 16.0D;
 				if (creeper.randomTeleport(d3, d4, d5, false)) {
 					break;
 				}
 			}
-			event.player.level.addFreshEntity(creeper);
+			event.player.level().addFreshEntity(creeper);
 		}
 	}
 	

@@ -23,7 +23,7 @@ public abstract class LivingEntityRendererMixin implements RenderLayerParent<Liv
 	private EntityModel<LivingEntity> model;
 
 	@Inject(at = @At("HEAD"), method = "getRenderType(Lnet/minecraft/world/entity/LivingEntity;ZZZ)Lnet/minecraft/client/renderer/RenderType;", cancellable = true)
-	public void invis(LivingEntity e, boolean b1, boolean b2, boolean b3, CallbackInfoReturnable<RenderType> info) {
+	public void unidentifiedenchantments$invis(LivingEntity e, boolean b1, boolean b2, boolean b3, CallbackInfoReturnable<RenderType> info) {
 		if (e instanceof FakeCreeper && !e.isInvisibleTo(Minecraft.getInstance().player)) {
 			ResourceLocation resourcelocation = this.getTextureLocation(e);
 			info.setReturnValue(this.model.renderType(resourcelocation));

@@ -22,7 +22,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -114,8 +114,8 @@ public class ScrollOfIdentification extends Item{
 	}
 
 	@SubscribeEvent
-	static void registerTab(CreativeModeTabEvent.BuildContents event) {
-		if (event.getTab() == CreativeModeTabs.COMBAT) {
+	static void registerTab(BuildCreativeModeTabContentsEvent event) {
+		if (event.getTabKey() == CreativeModeTabs.COMBAT) {
 			event.accept(ItemRegistry.SCROLLOFIDENTIFICATION.get());
 		}
 	}

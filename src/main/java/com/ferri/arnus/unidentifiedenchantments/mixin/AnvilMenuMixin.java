@@ -1,14 +1,6 @@
 package com.ferri.arnus.unidentifiedenchantments.mixin;
 
-import java.util.Map;
-
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import com.ferri.arnus.unidentifiedenchantments.capability.HiddenEnchantProvider;
-
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
@@ -16,6 +8,12 @@ import net.minecraft.world.inventory.ItemCombinerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.enchantment.Enchantment;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Map;
 
 @Mixin(AnvilMenu.class)
 public abstract class AnvilMenuMixin extends ItemCombinerMenu {
@@ -25,7 +23,7 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu {
 	}
 	
 	@Inject(at = @At("RETURN"), method = "createResult()V")
-	public void createResult(CallbackInfo callback) {
+	public void unidentifiedenchantments$createResult(CallbackInfo callback) {
 		if (this.inputSlots.getItem(1).getItem() instanceof EnchantedBookItem) {
 			if (this.inputSlots.getItem(0).isBookEnchantable(this.inputSlots.getItem(1))) {
 				this.inputSlots.getItem(1).getCapability(HiddenEnchantProvider.ENCHANTMENTS).ifPresent(book -> {
