@@ -6,7 +6,13 @@
   "enchantment.unidentifiedenchantments.vanitycurse": "Curse of Vanity",
   "enchantment.unidentifiedenchantments.madnesscurse": "Curse of Madness",
   "enchantment.unidentifiedenchantments.brittlecurse": "Curse of Brittleness",
-  
+  "enchantment.unidentifiedenchantments.forgetcurse": "Curse of Forgetfulness",
+  "enchantment.unidentifiedenchantments.flammablecurse": "Curse of Flames",
+  "enchantment.unidentifiedenchantments.clumsycurse": "Curse of Clumsiness",
+  "enchantment.unidentifiedenchantments.smellcurse": "Curse of Smell",
+  "enchantment.unidentifiedenchantments.lumbercurse": "Curse of the Lumberjack",
+
+
   "item.unidentifiedenchantments.scrollofidentification.level": "%1$s Levels from %2$s",
   "item.unidentifiedenchantments.scrollofidentification.desc": "Pace on top of the item you want to identify",
   "enchantment.unidentifiedenchantments.hungercurse.desc": "Causes hunger to be depleted faster",
@@ -15,6 +21,13 @@
   "enchantment.unidentifiedenchantments.vanitycurse.desc": "Does nothing, but it looked pretty",
   "enchantment.unidentifiedenchantments.madnesscurse.desc": "Causes a creeper to appear every so often, only you can see it, and it does not cause damage.",
   "enchantment.unidentifiedenchantments.brittlecurse.desc": "Your tools loose durability faster",
+  "enchantment.unidentifiedenchantments.forgetcurse.desc": "You gain less experience from killing mobs",
+  "enchantment.unidentifiedenchantments.flammablecurse.desc": "You take additional fire damage",
+  "enchantment.unidentifiedenchantments.clumsycurse.desc": "You sometimes drop your weapon",
+  "enchantment.unidentifiedenchantments.smellcurse.desc": "Mobs can find you even if they can't see you",
+  "enchantment.unidentifiedenchantments.lumbercurse.desc": "Your axe only works on wood",
+
+
 
   "entity.unidentifiedenchantments.fakecreeper":"Creeper"
 }

@@ -38,12 +38,13 @@ public class CurseLootModifier extends LootModifier{
 			if(0.15 + 0.1*enchantments.size() > new Random().nextDouble() && (!EnchantmentHelper.getAvailableEnchantmentResults(1, stack, true).isEmpty() || stack.getItem() instanceof EnchantedBookItem)) {
 				ArrayList<RegistryObject<? extends Enchantment>> list = (ArrayList<RegistryObject<? extends Enchantment>>) EnchantmentRegistry.CURSELIST.clone();
 				if (stack.getItem() instanceof EnchantedBookItem) {
-					EnchantedBookItem.addEnchantment(stack, new EnchantmentInstance(list.get(new Random().nextInt(list.size())).get(), 1));
+					Enchantment pEnchantment = list.get(new Random().nextInt(list.size())).get();
+					EnchantedBookItem.addEnchantment(stack, new EnchantmentInstance(pEnchantment, new Random().nextInt(pEnchantment.getMaxLevel())));
 				} else {
 					Collections.shuffle(list);
 					for (RegistryObject<? extends Enchantment> enchantment: list) {
 						if (enchantment.get().canEnchant(stack)) {
-							stack.enchant(enchantment.get(), 1);
+							stack.enchant(enchantment.get(), new Random().nextInt(enchantment.get().getMaxLevel()));
 							break;
 						}
 					}

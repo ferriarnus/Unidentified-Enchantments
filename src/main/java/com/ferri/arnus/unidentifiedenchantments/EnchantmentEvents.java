@@ -4,7 +4,9 @@ import com.ferri.arnus.unidentifiedenchantments.enchantment.EnchantmentRegistry;
 import com.ferri.arnus.unidentifiedenchantments.entity.EntityRegistry;
 import com.ferri.arnus.unidentifiedenchantments.entity.FakeCreeper;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player.BedSleepingProblem;
@@ -12,7 +14,10 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -73,6 +78,36 @@ public class EnchantmentEvents {
 	static void sleep(PlayerSleepInBedEvent event) {
 		if (EnchantmentHelper.getRandomItemWith(EnchantmentRegistry.INSOMNIACURSE.get(), event.getEntity()) != null) {
 			event.setResult(BedSleepingProblem.NOT_SAFE);
+		}
+	}
+
+	@SubscribeEvent
+	static void exp(LivingExperienceDropEvent event) {
+		if (event.getAttackingPlayer() != null) {
+			int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.FORGETCURSE.get(), event.getAttackingPlayer());
+			if (level > 0) {
+				event.setDroppedExperience((int) (event.getDroppedExperience() * (1.0 - level*0.10)));
+			}
+		}
+	}
+
+	@SubscribeEvent
+	static void flame(LivingHurtEvent event) {
+		if (event.getSource().is(DamageTypeTags.IS_FIRE)) {
+			int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.FLAMECURSE.get(), event.getEntity());
+			if (level > 0) {
+				event.setAmount(event.getAmount() + level);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	static void axe(LivingAttackEvent event) {
+		if (event.getSource().getEntity() instanceof LivingEntity living) {
+			int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.LUMBERCURSE.get(), living);
+			if (level > 0) {
+				event.setCanceled(true);
+			}
 		}
 	}
 }

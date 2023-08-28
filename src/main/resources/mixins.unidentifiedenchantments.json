@@ -5,7 +5,8 @@
   "refmap": "mixins.unidentifiedenchantments.refmap.json",
   "mixins": [
     "AnvilMenuMixin",
-    "LivingEntityRendererMixin"
+    "LivingEntityRendererMixin",
+    "LivingEntityMixin"
   ],
   "minVersion": "0.8.4"
 }
